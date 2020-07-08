@@ -28,17 +28,6 @@ class CursosHome extends Component {
                       })}
                     </div>
                   </div>
-                  <div className="col-12">
-                    <Head className="col-12 text-center">
-                      <p>Testemunhas</p>
-                      <h2>Estudantes Satisfeitos</h2>
-                    </Head>
-                    <div className="col-12">
-                      {happyStudents.map((student) => {
-                        return <HappyStudent key={student.id} {...student} />;
-                      })}
-                    </div>
-                  </div>
                 </div>
               </div>
             </div>

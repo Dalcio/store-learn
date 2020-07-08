@@ -101,7 +101,7 @@ class Footer extends Component {
               <hr />
               <p className="mt-5">
                 Copyright © 2020 All rights reserved | This site is made with
-                <span></span> ✌ by Dálcio Garcia & Montana
+                <span></span> ✌ by Dálcio Garcia
               </p>
             </div>
           </div>

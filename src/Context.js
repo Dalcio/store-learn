@@ -13,6 +13,7 @@ class MyProvider extends Component {
     produtos: [...produtos],
     produtoDetails: null,
     cartProd: [],
+    cartTotal: 0,
   };
 
   handleDetails = (id) => {
@@ -38,11 +39,14 @@ class MyProvider extends Component {
     produtos[index].inCart = true;
     tempProd.total = produtos[index].preco;
     tempProd.quantity = 1;
+    let cartTotal = this.state.cartTotal;
+    cartTotal += produtos[index].preco;
     this.setState(
       () => {
         return {
           produtos: [...produtos],
           cartProd: [...this.state.cartProd, tempProd],
+          cartTotal: cartTotal,
         };
       },
       () => {}
@@ -53,25 +57,36 @@ class MyProvider extends Component {
     const cartProd = [...this.state.cartProd];
     const index = produtos.findIndex((prod) => prod.id === id);
     produtos[index].inCart = false;
+    let cartTotal = this.state.cartTotal;
+    cartTotal -= produtos[index].preco * produtos[index].quantity;
     const tempProds = cartProd.filter((prod) => prod.id !== id);
     this.setState(
       () => {
         return {
           produtos: [...produtos],
           cartProd: [...tempProds],
+          cartTotal: cartTotal,
         };
       },
       () => {}
     );
   };
 
+  clearCart = () => {
+    const produtos = [...this.state.produtos];
+    for (let i = 0; i < produtos.length; i++) produtos[i].inCart = false;
+    this.setState({ produtos: [...produtos], cartProd: [], cartTotal: 0 });
+  };
   incrementProd = (id) => {
     let cartProd = [...this.state.cartProd];
     const indexOfId = cartProd.findIndex((prod) => prod.id === id);
     cartProd[indexOfId].quantity += 1;
     cartProd[indexOfId].total =
       cartProd[indexOfId].quantity * cartProd[indexOfId].preco;
-    this.setState({ cartProd: [...cartProd] });
+
+    let cartTotal = this.state.cartTotal;
+    cartTotal += cartProd[indexOfId].preco;
+    this.setState({ cartProd: [...cartProd], cartTotal: cartTotal });
   };
 
   decreaseProd = (id) => {
@@ -82,7 +97,9 @@ class MyProvider extends Component {
     } else {
       cartProd[indexOfId].quantity -= 1;
       cartProd[indexOfId].total -= cartProd[indexOfId].preco;
-      this.setState({ cartProd: [...cartProd] });
+      let cartTotal = this.state.cartTotal;
+      cartTotal -= cartProd[indexOfId].preco;
+      this.setState({ cartProd: [...cartProd], cartTotal: cartTotal });
     }
   };
 
@@ -98,6 +115,7 @@ class MyProvider extends Component {
           handleProdutoDetails: this.handleProdutoDetails,
           incrementProd: this.incrementProd,
           decreaseProd: this.decreaseProd,
+          clearCart: this.clearCart,
         }}
       >
         {this.props.children}

@@ -1,15 +1,23 @@
 import React, { Component } from "react";
 import { BsPlus, BsDash, BsTrash } from "react-icons/bs";
 import { MyConsumer } from "../../Context";
-import { produtos } from "../../DadosDosProdutos";
+import PayPalButton from "../PaypalBtn";
 import styled from "styled-components";
 
 class Cart extends Component {
   render() {
+    const { history } = this.props;
     return (
       <MyConsumer>
         {(value) => {
-          const { cartProd, incrementProd, decreaseProd, remFromCart } = value;
+          const {
+            cartProd,
+            cartTotal,
+            clearCart,
+            incrementProd,
+            decreaseProd,
+            remFromCart,
+          } = value;
           return (
             <div className="container">
               <div className="row">
@@ -73,8 +81,26 @@ class Cart extends Component {
                     </tbody>
                   </table>
                 </div>
-                <div>
-                  <h1>PayPal</h1>
+                <div className="col-12">
+                  <button
+                    className="col-5 mr-2 btn btn-lg btn-danger"
+                    disabled={cartProd.length === 0}
+                    onClick={() => clearCart()}
+                  >
+                    Limpar
+                  </button>
+                  <button
+                    className="col-6 btn btn-lg btn-success"
+                    disabled={cartProd.length === 0}
+                    onClick={() => alert("Obrigado Por Comprar Aqui")}
+                  >
+                    Comprar
+                  </button>
+                  <PayPalButton
+                    total={cartTotal}
+                    clearCart={clearCart}
+                    history={history}
+                  />
                 </div>
               </div>
             </div>

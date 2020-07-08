@@ -26,7 +26,7 @@ class ProdutoDetails extends Component {
                   </Link>
                 </NoSelected>
               ) : (
-                <div>
+                <div className="col-12">
                   <Details className="container p-0">
                     <div className="row">
                       <div className="col-12 col-md-4">
@@ -49,7 +49,7 @@ class ProdutoDetails extends Component {
                           {selectedProd.inCart ? "Remover" : "Add To Cart"}
                         </button>
                         <Link to="/home/cart">
-                          <button className="btn btn-secondary ml-1 col-12 col-sm-4 btn-lg">
+                          <button className="btn btn-secondary ml-sm-1 col-12 col-sm-4 btn-lg">
                             Go to Cart
                           </button>
                         </Link>
