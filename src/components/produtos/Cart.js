@@ -96,11 +96,6 @@ class Cart extends Component {
                   >
                     Comprar
                   </button>
-                  <PayPalButton
-                    total={cartTotal}
-                    clearCart={clearCart}
-                    history={history}
-                  />
                 </div>
               </div>
             </div>
