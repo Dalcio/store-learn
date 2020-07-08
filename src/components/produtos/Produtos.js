@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import ProdutoItem from "./ProdutoItem";
 import { MyConsumer } from "../../Context";
-import CartBtn from "./CartBtn";
 
 class Produtos extends Component {
   render() {

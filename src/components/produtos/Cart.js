@@ -1,18 +1,15 @@
 import React, { Component } from "react";
 import { BsPlus, BsDash, BsTrash } from "react-icons/bs";
 import { MyConsumer } from "../../Context";
-import PayPalButton from "../PaypalBtn";
 import styled from "styled-components";
 
 class Cart extends Component {
   render() {
-    const { history } = this.props;
     return (
       <MyConsumer>
         {(value) => {
           const {
             cartProd,
-            cartTotal,
             clearCart,
             incrementProd,
             decreaseProd,

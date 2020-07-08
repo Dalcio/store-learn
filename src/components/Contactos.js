@@ -25,10 +25,9 @@ class Contactos extends Component {
   };
 
   onSubmit = (event) => {
-    Object.keys(this.state).map((item) => {
+    /*Object.keys(this.state).map((item) => {
       console.log("=> " + item);
-    });
-    console.log("submeter");
+    });*/
   };
 
   render() {

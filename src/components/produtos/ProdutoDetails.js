@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import { MyConsumer } from "../../Context";
 import styled from "styled-components";
-import { BsFillBagFill } from "react-icons/bs";
-import CartBtn from "./CartBtn";
 import { Link } from "react-router-dom";
 import { NoSelected } from "../NoSelected";
 

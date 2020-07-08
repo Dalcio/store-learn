@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import PageHeader from "../PageHeader";
 import CursoItem from "./CursoItem";
-import HappyStudent from "./HappyStudent";
 import { Head } from "./Head";
 import { MyConsumer } from "../../Context";
 
@@ -10,10 +9,9 @@ class CursosHome extends Component {
     return (
       <MyConsumer>
         {(values) => {
-          const { happyStudents, cursos } = values;
+          const { cursos } = values;
           return (
             <div>
-              {" "}
               <PageHeader title="Nossos Cursos" path="Home / Cursos" />
               <div className="container">
                 <div className="row">
